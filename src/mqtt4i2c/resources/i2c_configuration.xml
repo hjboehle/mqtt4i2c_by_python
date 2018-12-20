@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemlist>
+	<item id="1" type="Switch" pattern="subscribe">
+		<mqttdata>
+			<topic>/Haus/OG/Arbeitszimmer/Testlampe</topic>
+		</mqttdata>
+		<i2cdata>
+			<i2c-bus>1</i2c-bus>
+			<i2c-address>70</i2c-address>
+			<i2c-pmx-channel>0</i2c-pmx-channel>
+			<i2c-pmx-address>25</i2c-pmx-address>
+		</i2cdata>
+		<itemstates>
+			<itemstate type="On">
+				<message>an</message>
+				<hex-value>1</hex-value>
+				<comment>Lampe leuchtet</comment>
+			</itemstate>
+			<itemstate type="Off">
+				<message>aus</message>
+				<hex-value>0</hex-value>
+				<comment>Lampe leuchtet nicht</comment>
+			</itemstate>
+		</itemstates>
+	</item>
+	<item id="2" type="Switch" pattern="subscribe">
+		<mqttdata>
+			<topic>/Haus/OG/Kinderzimmer/Testlampe</topic>
+		</mqttdata>
+		<i2cdata>
+			<i2c-bus>1</i2c-bus>
+			<i2c-address>70</i2c-address>
+			<i2c-pmx-channel>0</i2c-pmx-channel>
+			<i2c-pmx-address>26</i2c-pmx-address>
+		</i2cdata>
+		<itemstates>
+			<itemstate type="On">
+				<message>an</message>
+				<hex-value>1</hex-value>
+				<comment>Lampe leuchtet</comment>
+			</itemstate>
+			<itemstate type="Off">
+				<message>aus</message>
+				<hex-value>0</hex-value>
+				<comment>Lampe leuchtet nicht</comment>
+			</itemstate>
+		</itemstates>
+	</item>
+	<item id="3" type="Contact" pattern="publish">
+		<mqttdata>
+			<topic>/Haus/OG/Arbeitszimmer/Testkontakt</topic>
+		</mqttdata>
+		<i2cdata>
+			<i2c-bus>1</i2c-bus>
+			<i2c-address>70</i2c-address>
+			<i2c-pmx-channel>0</i2c-pmx-channel>
+			<i2c-pmx-address>27</i2c-pmx-address>
+		</i2cdata>
+		<itemstates>
+			<itemstate type="Open">
+				<message>geöffnet</message>
+				<hex-value>0</hex-value>
+				<comment>Kontakt geöffnet</comment>
+			</itemstate>
+			<itemstate type="Closed">
+				<message>geschlossen</message>
+				<hex-value>1</hex-value>
+				<comment>Kontakt geschlossen</comment>
+			</itemstate>
+		</itemstates>
+	</item>
+</itemlist>
