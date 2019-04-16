@@ -6,7 +6,7 @@ Created on 18.12.2018
 
 class ItemAbstract(object):
 
-    def __init__(self, i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address):
+    def __init__(self, topic, i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address):
         self.i2c_bus = i2c_bus
         self.i2c_address = i2c_address
         self.i2c_pmx_channel = i2c_pmx_channel

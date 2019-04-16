@@ -10,14 +10,12 @@ from mqtt4i2c.I2cConfiguration import I2cConfiguration
 
 def main():
     i2c_configuration = I2cConfiguration(settings.I2C_XML_CONFIGURATION_FILE_NAME)
-    mqtt_configuration = i2c_configuration.get_mqtt_configuration()
-    number_of_items_subscribe = mqtt_configuration[0]
-    number_of_items_publish = mqtt_configuration[1]
-    print('number of items to subscribe:', number_of_items_subscribe)
-    print('number of items to publish:', number_of_items_publish)
     
-    item_switch = ItemSwitch('1', '70', '0', '27', '1', '0')
-    print('item_switch - i2cbus: ', item_switch.i2c_bus)
+    # configuration switch
+    number_of_switches = i2c_configuration.get_number_of_items_per_type('Switch')
+    print('number of switches:', number_of_switches)
+        
+    
     
 if __name__ == '__main__':
     main()

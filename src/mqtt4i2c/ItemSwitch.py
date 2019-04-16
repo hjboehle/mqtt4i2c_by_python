@@ -8,8 +8,8 @@ from mqtt4i2c.ItemAbstract import ItemAbstract
 
 class ItemSwitch(ItemAbstract):
 
-    def __init__(self, i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address, value_on, value_off):
-        super().__init__(i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address)
+    def __init__(self, topic, i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address, value_on, value_off):
+        super().__init__(topic, i2c_bus, i2c_address, i2c_pmx_channel, i2c_pmx_address)
         self.value_on = value_on
         self.value_off = value_off
         
