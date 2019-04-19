@@ -5,6 +5,7 @@ Created on 18.12.2018
 '''
 
 from mqtt4i2c.ItemAbstract import ItemAbstract
+from mqtt4i2c.I2cConfiguration import I2cConfiguration
 
 class ItemSwitch(ItemAbstract):
 

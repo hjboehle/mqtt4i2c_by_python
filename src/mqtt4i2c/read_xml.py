@@ -9,11 +9,13 @@ from mqtt4i2c.I2cConfiguration import I2cConfiguration
 
 types = ['Switch', 'Contact']
 i2c_configuration = I2cConfiguration('resources/i2c_configuration.xml')
-item_configuration = i2c_configuration.get_item_configuration(types[0])
+tree = ET.ElementTree(file='resources/i2c_configuration.xml')
+print(types[0])
+item_configuration = i2c_configuration.get_item_switch_configuration(tree, types[0])
+print(item_configuration)
 
 print('filename:', i2c_configuration.test())
 
-tree = ET.ElementTree(file='resources/i2c_configuration.xml')
 root = tree.getroot()
 
 topic = i2c_configuration.get_topic(tree, types[0])
@@ -27,19 +29,6 @@ print(itemstate)
 
 itemstate = i2c_configuration.get_itemstate(tree, types[0], 'Off')
 print(itemstate)
-
-def get_i2c_configuration(n, item_type):
-    if item_type == 'Switch':
-        item_configuration = []
-        item_configuration.append(get_topic(n, item_type))
-        i2cdata = get_i2cdata(n, item_type)
-        item_configuration.append(i2cdata[0][1])
-        item_configuration.append(i2cdata[1][1])
-        item_configuration.append(i2cdata[2][1])
-        item_configuration.append(i2cdata[3][1])
-        item_configuration.append(get_itemstate(n, item_type, 'On'))
-        item_configuration.append(get_itemstate(n, item_type, 'Off'))
-    return item_configuration
 
 def get_topic(n, item_type):
     i = 1
