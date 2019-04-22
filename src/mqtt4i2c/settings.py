@@ -13,6 +13,6 @@ BROKER_PORT = '1883'
 CLIENT_ID = 'MQTT2I2C'
 
 # Configuration-XML-File of the I2C-MQTT-Client
-I2C_XML_CONFIGURATION_FILE_NAME = 'resources/i2c_configuration.xml'
+ITEM_XML_CONFIGURATION_FILE_NAME = 'resources/item_configuration.xml'
 #I2C_XML_CONFIGURATION_FILE_NAME = 'resources/i2c_configuration_.xml' # file not available
 #I2C_XML_CONFIGURATION_FILE_NAME = 'resources/i2c_configuration_corrupt.xml' # xml file contains text but not xml
