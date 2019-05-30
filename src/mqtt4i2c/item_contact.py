@@ -4,7 +4,7 @@ Created on 22.04.2019
 @author: hjboehle
 '''
 
-from mqtt4i2c.ItemAbstract import ItemAbstract
+from mqtt4i2c.item_abstract import ItemAbstract
 
 class ItemContact(ItemAbstract):
 

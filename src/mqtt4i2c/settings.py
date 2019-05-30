@@ -16,3 +16,9 @@ CLIENT_ID = 'MQTT2I2C'
 ITEM_XML_CONFIGURATION_FILE_NAME = 'resources/item_configuration.xml'
 #I2C_XML_CONFIGURATION_FILE_NAME = 'resources/i2c_configuration_.xml' # file not available
 #I2C_XML_CONFIGURATION_FILE_NAME = 'resources/i2c_configuration_corrupt.xml' # xml file contains text but not xml
+
+# logfile folder
+LOG_FILE_FOLDER = '/home/hjboehle/.mqtt4i2c/logs/'
+
+# logfile name
+LOG_FILE_NAME = 'mqtt4i2c'

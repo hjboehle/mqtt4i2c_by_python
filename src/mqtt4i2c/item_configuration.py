@@ -4,8 +4,8 @@ Created on 18.12.2018
 @author: hjboehle
 '''
 
-from mqtt4i2c.ItemSwitch import ItemSwitch
-from mqtt4i2c.ItemContact import ItemContact
+from mqtt4i2c.item_switch import ItemSwitch
+from mqtt4i2c.item_contact import ItemContact
 
 class ItemConfiguration:
 

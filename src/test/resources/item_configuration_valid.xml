@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itemlist xmlns="http://www.github.com/hjboehle/mqtt4i2c"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.github.com/hjboehle/mqtt4i2c item_configuration.xsd">
-	<item id="1" type="Switch" active="yes">
+<itemlist>
+	<item id="1" type="Switch" pattern="subscribe">
 		<mqttdata>
-			<topic>/Haus/OG/Arbeitszimmer/Testlampe</topic>
+			<topic>/house/homeoffice/lamp</topic>
 		</mqttdata>
 		<i2cdata>
 			<i2c-bus>1</i2c-bus>
@@ -14,20 +12,20 @@
 		</i2cdata>
 		<itemstates>
 			<itemstate type="On">
-				<message>an</message>
+				<message>on</message>
 				<hex-value>1</hex-value>
-				<comment>Lampe leuchtet</comment>
+				<comment>lamp lights up</comment>
 			</itemstate>
 			<itemstate type="Off">
-				<message>aus</message>
+				<message>off</message>
 				<hex-value>0</hex-value>
-				<comment>Lampe leuchtet nicht</comment>
+				<comment>lamp does not light</comment>
 			</itemstate>
 		</itemstates>
 	</item>
-	<item id="2" type="Switch" active="yes">
+	<item id="2" type="Switch" pattern="subscribe">
 		<mqttdata>
-			<topic>/Haus/OG/Kinderzimmer/Testlampe</topic>
+			<topic>/house/livingroom/fan</topic>
 		</mqttdata>
 		<i2cdata>
 			<i2c-bus>1</i2c-bus>
@@ -37,20 +35,20 @@
 		</i2cdata>
 		<itemstates>
 			<itemstate type="On">
-				<message>an</message>
+				<message>on</message>
 				<hex-value>1</hex-value>
-				<comment>Lampe leuchtet</comment>
+				<comment>fan is turning</comment>
 			</itemstate>
 			<itemstate type="Off">
-				<message>aus</message>
+				<message>off</message>
 				<hex-value>0</hex-value>
-				<comment>Lampe leuchtet nicht</comment>
+				<comment>fan does not turn</comment>
 			</itemstate>
 		</itemstates>
 	</item>
-	<item id="3" type="Contact" active="yes">
+	<item id="3" type="Contact" pattern="publish">
 		<mqttdata>
-			<topic>/Haus/OG/Arbeitszimmer/Testkontakt</topic>
+			<topic>/house/homeoffice/windowcontact</topic>
 		</mqttdata>
 		<i2cdata>
 			<i2c-bus>1</i2c-bus>
@@ -60,14 +58,14 @@
 		</i2cdata>
 		<itemstates>
 			<itemstate type="Open">
-				<message>geöffnet</message>
+				<message>open</message>
 				<hex-value>0</hex-value>
-				<comment>Kontakt geöffnet</comment>
+				<comment>window is open</comment>
 			</itemstate>
 			<itemstate type="Closed">
-				<message>geschlossen</message>
+				<message>closed</message>
 				<hex-value>1</hex-value>
-				<comment>Kontakt geschlossen</comment>
+				<comment>window is closed</comment>
 			</itemstate>
 		</itemstates>
 	</item>

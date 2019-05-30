@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.github.com/hjboehle/mqtt4i2c" 
+           xmlns="http://www.github.com/hjboehle/mqtt4i2c" 
+           elementFormDefault="qualified">
+
+   <xs:element name="itemlist">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="item" type="itemType" maxOccurs="unbounded" />
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+
+   <xs:complexType name="itemType">
+      <xs:sequence>
+         <xs:element name="mqttdata" type="mqttdataType" />
+         <xs:element name="i2cdata" type="i2cdataType" />
+         <xs:element name="itemstates" type="itemstatesType" />
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer" />
+      <xs:attribute name="type" type="itemtypeType" />
+      <xs:attribute name="active" type="activeType" />
+   </xs:complexType>
+
+   <xs:complexType name="mqttdataType">
+      <xs:sequence>
+         <xs:element name="topic" type="xs:string" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="i2cdataType">
+      <xs:sequence>
+         <xs:element name="i2c-bus" type="i2c-busType" />
+         <xs:element name="i2c-address" type="i2c-addressType" />
+         <xs:element name="i2c-pmx-channel" type="pmx-channelType" />
+         <xs:element name="i2c-pmx-address" type="i2c-addressType" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="itemstatesType">
+      <xs:sequence>
+         <xs:element name="itemstate" type="itemstateType" maxOccurs="unbounded" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <xs:complexType name="itemstateType">
+      <xs:sequence>
+         <xs:element name="message" type="xs:string" />
+         <xs:element name="hex-value" type="hex-valueType" />
+         <xs:element name="comment" type="xs:string" />
+      </xs:sequence>
+      <xs:attribute name="type" type="itemstatetypeType" />
+   </xs:complexType>
+
+   <xs:simpleType name="i2c-busType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[0-1]{1}" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="i2c-addressType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[0-9A-fa-f]{1,2}" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="pmx-channelType">
+      <xs:restriction base="xs:string">
+         <xs:pattern value="[0-3]{1}" />
+         <xs:length value="1" fixed="true"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="hex-valueType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="0" />
+         <xs:enumeration value="1" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="itemtypeType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="Switch" />
+         <xs:enumeration value="Contact" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="activeType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="yes" />
+         <xs:enumeration value="no" />
+      </xs:restriction>
+   </xs:simpleType>
+
+   <xs:simpleType name="itenstatetypeType">
+      <xs:restriction base="xs:string">
+         <xs:enumeration value="On" />
+         <xs:enumeration value="Off" />
+         <xs:enumeration value="Open" />
+         <xs:enumeration value="Closed" />
+      </xs:restriction>
+   </xs:simpleType>
+
+</xs:schema>

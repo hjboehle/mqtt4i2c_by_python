@@ -3,6 +3,9 @@ Created on 27.04.2019
 
 @author: hjboehle
 '''
+# Messages about the logging configuration
+LOGGING_MESSAGE_LOG_FILE = 'logfile: '
+
 # Message about the reading of the item configuration
 PROGRAMM_MESSAGE_ITEM_CONFIGURATION_OPEN_XMLFILE = 'read the configuration of the items ...'
 PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_SWITCHES = '   read the configuration of the switches ... '
