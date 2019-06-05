@@ -6,6 +6,8 @@ Created on 18.12.2018
 
 from mqtt4i2c.item_switch import ItemSwitch
 from mqtt4i2c.item_contact import ItemContact
+from mqtt4i2c import settings
+import xmlschema
 
 class ItemConfiguration:
 
@@ -15,6 +17,15 @@ class ItemConfiguration:
     def get_item_xml_configuration_file_name(self):
         return self.item_xml_configuration_file_name
     
+    # method to validate the item configuration xml file against the xml schema
+    def validate_item_xml_configuration_file(self, xml_schema_file_name):
+        xsd = xmlschema.XMLSchema(xml_schema_file_name)
+        if xsd.is_valid(self.item_xml_configuration_file_name):
+            valid_item_configuration_xml_file = True
+        else:
+            valid_item_configuration_xml_file = False
+        return (valid_item_configuration_xml_file)
+
     def get_item_switches(self, tree, name_space):
         item_switches = []
         item_type = 'Switch'

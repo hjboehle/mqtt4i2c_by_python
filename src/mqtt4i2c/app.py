@@ -28,11 +28,21 @@ def main():
     logger.addHandler(ch)
     logger.info(log_outputs.LOGGING_MESSAGE_LOG_FILE + log_file_name)
 
+    # validate the item XML configuration file against the xml schema
+    logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_VALID_XMLFILE)
+    item_configuration = ItemConfiguration(settings.ITEM_XML_CONFIGURATION_FILE_NAME)
+    valid_item_configuration_xml_file = item_configuration.validate_item_xml_configuration_file(settings.ITEM_CONFIGURATION_XML_SCHEMA_FILE)
+    if valid_item_configuration_xml_file == True:
+        logger.info(log_outputs.PROGRAMM_MESSAGE_READY_1)
+    else:
+        logger.info(log_outputs.PROGRAM_ERROR_NOT_VALID_ITEM_CONFIGURATION_XMLFILE)
+        logger.info(log_outputs.PROGRAM_ERROR_TERMINATION_MESSAGE)
+        exit(1)
+
     # open the item XML configuration file
     logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_OPEN_XMLFILE)
     try:
         # prepare reading of the configuration
-        item_configuration = ItemConfiguration(settings.ITEM_XML_CONFIGURATION_FILE_NAME)
         tree = ET.ElementTree(file=item_configuration.get_item_xml_configuration_file_name())
         name_space = {'ns': settings.ITEM_CONFIGURATION_XML_FILE_NAMESPACE}
         # read configuration for the items from the type switch

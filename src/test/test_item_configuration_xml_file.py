@@ -5,7 +5,6 @@ Created on 04.06.2019
 '''
 
 import unittest
-import xmlschema
 from mqtt4i2c.item_configuration import ItemConfiguration
 
 class TestCase(unittest.TestCase):
@@ -20,7 +19,8 @@ class TestCase(unittest.TestCase):
         
         # Validation of the XML item configuration against the XML schema (XML file is valid)
         item_configuration = ItemConfiguration('resources/item_configuration_valid.xml')
-        item_xml_configuration_file_name = item_configuration.get_item_xml_configuration_file_name()
-        xml_schema_file_name = 'mqtt4i2c/item_configuration.xsd'
-        # !!!!Note: once the method validate_item_configuration_xml-file is ready !!!!
-        
+        self.assertEqual(item_configuration.validate_item_xml_configuration_file('../mqtt4i2c/resources/item_configuration.xsd'), True)
+
+        # Validation of the XML item configuration against the XML schema (XML file is not valid)
+        item_configuration = ItemConfiguration('resources/item_configuration_corrupt.xml')
+        self.assertEqual(item_configuration.validate_item_xml_configuration_file('../mqtt4i2c/resources/item_configuration.xsd'), False)

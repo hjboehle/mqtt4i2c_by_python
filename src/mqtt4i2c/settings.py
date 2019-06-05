@@ -4,6 +4,9 @@ Created on 18.12.2018
 @author: hjboehle
 '''
 
+# XML schema file to validate the item configuration XML file
+ITEM_CONFIGURATION_XML_SCHEMA_FILE = 'resources/item_configuration.xsd'
+
 # XML Namespace for the item configuration XML file
 ITEM_CONFIGURATION_XML_FILE_NAMESPACE = 'http://www.github.com/hjboehle/mqtt4i2c'
 
