@@ -34,15 +34,16 @@ def main():
         # prepare reading of the configuration
         item_configuration = ItemConfiguration(settings.ITEM_XML_CONFIGURATION_FILE_NAME)
         tree = ET.ElementTree(file=item_configuration.get_item_xml_configuration_file_name())
+        name_space = {'ns': settings.ITEM_CONFIGURATION_XML_FILE_NAMESPACE}
         # read configuration for the items from the type switch
         logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_SWITCHES)
-        item_switches = item_configuration.get_item_switches(tree)
+        item_switches = item_configuration.get_item_switches(tree, name_space)
         log_generator_switches = mqtt4i2c.log_generator.LogGenerator(item_switches, 'switch')
         log_generator_switches.generate_lines_logfile()
         logger.info(log_outputs.PROGRAMM_MESSAGE_READY_2)
         # read configuration for the items from the type contact
         logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_CONTACTS)
-        item_contacts = item_configuration.get_item_contacts(tree)
+        item_contacts = item_configuration.get_item_contacts(tree, name_space)
         log_generator_contacts = mqtt4i2c.log_generator.LogGenerator(item_contacts, 'contact')
         log_generator_contacts.generate_lines_logfile()
         logger.info(log_outputs.PROGRAMM_MESSAGE_READY_2)

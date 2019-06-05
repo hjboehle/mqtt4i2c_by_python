@@ -3,6 +3,10 @@ Created on 18.12.2018
 
 @author: hjboehle
 '''
+
+# XML Namespace for the item configuration XML file
+ITEM_CONFIGURATION_XML_FILE_NAMESPACE = 'http://www.github.com/hjboehle/mqtt4i2c'
+
 # hostname or IP-address of the MQTT-Broker
 BROKER_HOST = 'localhost'
 

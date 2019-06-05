@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itemlist>
-	<item id="1" type="Switch" pattern="subscribe">
+<itemlist xmlns="http://www.github.com/hjboehle/mqtt4i2c"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.github.com/hjboehle/mqtt4i2c ../../mqtt4i2c/resources/item_configuration.xsd">
+	<item id="1" type="Switch" active="yes">
 		<mqttdata>
 			<topic>/house/homeoffice/lamp</topic>
 		</mqttdata>
@@ -23,7 +25,30 @@
 			</itemstate>
 		</itemstates>
 	</item>
-	<item id="2" type="Switch" pattern="subscribe">
+	<item id="2" type="Switch" active="no">
+		<mqttdata>
+			<topic>/house/livingroom/standardlamp</topic>
+		</mqttdata>
+		<i2cdata>
+			<i2c-bus>1</i2c-bus>
+			<i2c-address>70</i2c-address>
+			<i2c-pmx-channel>0</i2c-pmx-channel>
+			<i2c-pmx-address>28</i2c-pmx-address>
+		</i2cdata>
+		<itemstates>
+			<itemstate type="On">
+				<message>on</message>
+				<hex-value>1</hex-value>
+				<comment>standard lamp lights up</comment>
+			</itemstate>
+			<itemstate type="Off">
+				<message>off</message>
+				<hex-value>0</hex-value>
+				<comment>standard lamp does not light</comment>
+			</itemstate>
+		</itemstates>
+	</item>
+	<item id="3" type="Switch" active="yes">
 		<mqttdata>
 			<topic>/house/livingroom/fan</topic>
 		</mqttdata>
@@ -46,7 +71,7 @@
 			</itemstate>
 		</itemstates>
 	</item>
-	<item id="3" type="Contact" pattern="publish">
+	<item id="4" type="Contact" active="yes">
 		<mqttdata>
 			<topic>/house/homeoffice/windowcontact</topic>
 		</mqttdata>

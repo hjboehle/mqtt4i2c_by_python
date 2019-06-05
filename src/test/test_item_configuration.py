@@ -29,14 +29,15 @@ class TestCase(unittest.TestCase):
         
         # test method "get_topic" from class ItemConfiguration
         tree = ET.ElementTree(file=item_configuration.get_item_xml_configuration_file_name())
-        topic_switch = item_configuration.get_topic(tree, 'Switch')
+        name_space = {'ns': 'http://www.github.com/hjboehle/mqtt4i2c'}
+        topic_switch = item_configuration.get_topic(tree, 'Switch', name_space)
         self.assertEqual(topic_switch[0], '/house/homeoffice/lamp')
         self.assertEqual(topic_switch[1], '/house/livingroom/fan')
-        topic_contact = item_configuration.get_topic(tree, 'Contact')
+        topic_contact = item_configuration.get_topic(tree, 'Contact', name_space)
         self.assertEqual(topic_contact[0], '/house/homeoffice/windowcontact')
         
         # test method "get_i2cdata" from class ItemConfiguration with type "Switch"
-        i2cdata_switch = item_configuration.get_i2cdata(tree, 'Switch')
+        i2cdata_switch = item_configuration.get_i2cdata(tree, 'Switch', name_space)
         self.assertEqual(i2cdata_switch[0][1], '1')
         self.assertEqual(i2cdata_switch[1][1], '70')
         self.assertEqual(i2cdata_switch[2][1], '0')
@@ -46,27 +47,27 @@ class TestCase(unittest.TestCase):
         self.assertEqual(i2cdata_switch[6][1], '0')
         self.assertEqual(i2cdata_switch[7][1], '26')
         # test method "get_i2cdata" from class ItemConfiguration with type "Contact"
-        i2cdata_switch = item_configuration.get_i2cdata(tree, 'Contact')
+        i2cdata_switch = item_configuration.get_i2cdata(tree, 'Contact', name_space)
         self.assertEqual(i2cdata_switch[0][1], '1')
         self.assertEqual(i2cdata_switch[1][1], '70')
         self.assertEqual(i2cdata_switch[2][1], '0')
         self.assertEqual(i2cdata_switch[3][1], '27')
 
         # test method "get_itemstate" from class ItemConfiguration with type "Switch"
-        itemstate_switch = item_configuration.get_itemstate(tree, 'Switch', 'On')
+        itemstate_switch = item_configuration.get_itemstate(tree, 'Switch', 'On', name_space)
         self.assertEqual(itemstate_switch[0], '1')
         self.assertEqual(itemstate_switch[1], '1')
-        itemstate_switch = item_configuration.get_itemstate(tree, 'Switch', 'Off')
+        itemstate_switch = item_configuration.get_itemstate(tree, 'Switch', 'Off', name_space)
         self.assertEqual(itemstate_switch[0], '0')
         self.assertEqual(itemstate_switch[1], '0')
         # test method "get_itemstate" from class ItemConfiguration with type "contact"
-        itemstate_switch = item_configuration.get_itemstate(tree, 'Contact', 'Open')
+        itemstate_switch = item_configuration.get_itemstate(tree, 'Contact', 'Open', name_space)
         self.assertEqual(itemstate_switch[0], '0')
-        itemstate_switch = item_configuration.get_itemstate(tree, 'Contact', 'Closed')
+        itemstate_switch = item_configuration.get_itemstate(tree, 'Contact', 'Closed', name_space)
         self.assertEqual(itemstate_switch[0], '1')
 
         # test method "get_item_switches" from class ItemConfiguration
-        item_switches = item_configuration.get_item_switches(tree)
+        item_switches = item_configuration.get_item_switches(tree, name_space)
         self.assertEqual(item_switches[0].get_topic(), '/house/homeoffice/lamp')
         self.assertEqual(item_switches[0].get_i2c_bus(), '1')
         self.assertEqual(item_switches[0].get_i2c_address(), '70')
@@ -79,7 +80,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(item_switches[1].get_i2c_pmx_address(), '26')
 
         # test method "get_item_contacts" from class ItemConfiguration
-        item_contacts = item_configuration.get_item_contacts(tree)
+        item_contacts = item_configuration.get_item_contacts(tree, name_space)
         self.assertEqual(item_contacts[0].get_topic(), '/house/homeoffice/windowcontact')
         self.assertEqual(item_contacts[0].get_i2c_bus(), '1')
         self.assertEqual(item_contacts[0].get_i2c_address(), '70')

@@ -93,7 +93,7 @@
       </xs:restriction>
    </xs:simpleType>
 
-   <xs:simpleType name="itenstatetypeType">
+   <xs:simpleType name="itemstatetypeType">
       <xs:restriction base="xs:string">
          <xs:enumeration value="On" />
          <xs:enumeration value="Off" />
