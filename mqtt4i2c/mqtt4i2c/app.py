@@ -60,12 +60,14 @@ def main():
         # end of reading the configuration
         logger.info(log_outputs.PROGRAMM_MESSAGE_READY_1)
     except FileNotFoundError as error:
-        print(f'XML file not found: {error}')
-        print(log_outputs.PROGRAM_ERROR_TERMINATION_MESSAGE)
+        logger.error(log_outputs.PROGRAM_ERROR_XML_FILE_NOT_FOUND_ERROR)
+        logger.error(error)
+        logger.error(log_outputs.PROGRAM_ERROR_TERMINATION_MESSAGE)
         sys.exit(1)
     except:
-        print('Unexpected error: ', sys.exc_info()[0])
-        print(log_outputs.PROGRAM_ERROR_TERMINATION_MESSAGE)
+        logger.error(log_outputs.PROGRAM_ERROR_UNEXPECTED_ERROR)
+        logger.error(sys.exc_info()[0])
+        logger.error(log_outputs.PROGRAM_ERROR_TERMINATION_MESSAGE)
         sys.exit(1)
 
 if __name__ == '__main__':

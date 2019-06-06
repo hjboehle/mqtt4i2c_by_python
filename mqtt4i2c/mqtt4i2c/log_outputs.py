@@ -19,6 +19,8 @@ PROGRAMM_MESSAGE_READY_3 = '      ... ready'
 
 # Message about an termination of the program after an error
 PROGRAM_ERROR_NOT_VALID_ITEM_CONFIGURATION_XMLFILE = 'item configuration xml file is not valid'
+PROGRAM_ERROR_XML_FILE_NOT_FOUND_ERROR = 'unexpected error:'
+PROGRAM_ERROR_UNEXPECTED_ERROR = 'XML file not found'
 PROGRAM_ERROR_TERMINATION_MESSAGE = 'Program will now be terminated'
 
 # parameter lists for the class LogGenerator
