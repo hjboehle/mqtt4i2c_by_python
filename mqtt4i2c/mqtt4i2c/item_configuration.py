@@ -6,7 +6,6 @@ Created on 18.12.2018
 
 from mqtt4i2c.item_switch import ItemSwitch
 from mqtt4i2c.item_contact import ItemContact
-from mqtt4i2c import settings
 import xmlschema
 
 class ItemConfiguration:

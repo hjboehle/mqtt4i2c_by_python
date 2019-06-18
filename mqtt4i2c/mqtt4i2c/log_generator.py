@@ -9,17 +9,14 @@ from mqtt4i2c import log_outputs
 
 class LogGenerator:
 
-    def __init__(self, log_list, log_type):
-        #print('-------------------------------------')
-        self.logger = logging.getLogger('mqtt4i2c.log_generator.LogGenerator')
-        self.logger.info('---------------------------------------')
+    def __init__(self, log_list, log_type, logger):
         self.log_list = log_list
         self.log_type = log_type
+        self.logger = logger
         
     def generate_lines_logfile(self):
         if self.log_type == 'switch':
             for i in range(0, len(self.log_list)):
-                #print('self.logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_SWITCH)')
                 self.logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_SWITCH)
                 log_lines = []
                 log_lines.append(log_outputs.PARAMETERS_ITEM_SWITCHES[0] + ': ' + self.log_list[i].get_topic())
@@ -35,7 +32,6 @@ class LogGenerator:
         elif self.log_type == 'contact':
             for i in range(0, len(self.log_list)):
                 self.logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_CONTACT)
-                #print('self.logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_CONTACT)')
                 log_lines = []
                 log_lines.append(log_outputs.PARAMETERS_ITEM_CONTACTS[0] + ': ' + self.log_list[i].get_topic())
                 log_lines.append(log_outputs.PARAMETERS_ITEM_CONTACTS[1] + ': ' + self.log_list[i].get_i2c_bus())

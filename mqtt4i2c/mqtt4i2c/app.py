@@ -11,17 +11,18 @@ from mqtt4i2c import log_outputs
 import xml.etree.ElementTree as ET
 import sys
 import logging
+import log_generator
 
 def main():
     # logging configuration
     log_file_name = settings.LOG_FILE_FOLDER + settings.LOG_FILE_NAME
-    logger = logging.getLogger('mqtt4i2c.app')
+    logger = logging.getLogger('mqtt4i2c')#.getChild('.app')
     logger.setLevel(logging.INFO)
     fh = logging.FileHandler(log_file_name)
     fh.setLevel(logging.INFO)
     ch = logging.StreamHandler()
     ch.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s --> module: %(module)s')
     fh.setFormatter(formatter)
     ch.setFormatter(formatter)
     logger.addHandler(fh)
@@ -48,13 +49,14 @@ def main():
         # read configuration for the items from the type switch
         logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_SWITCHES)
         item_switches = item_configuration.get_item_switches(tree, name_space)
-        log_generator_switches = mqtt4i2c.log_generator.LogGenerator(item_switches, 'switch')
+        log_generator_switches = mqtt4i2c.log_generator.LogGenerator(item_switches, 'switch', logger)
         log_generator_switches.generate_lines_logfile()
         logger.info(log_outputs.PROGRAMM_MESSAGE_READY_2)
+
         # read configuration for the items from the type contact
         logger.info(log_outputs.PROGRAMM_MESSAGE_ITEM_CONFIGURATION_READ_CONTACTS)
         item_contacts = item_configuration.get_item_contacts(tree, name_space)
-        log_generator_contacts = mqtt4i2c.log_generator.LogGenerator(item_contacts, 'contact')
+        log_generator_contacts = mqtt4i2c.log_generator.LogGenerator(item_contacts, 'contact', logger)
         log_generator_contacts.generate_lines_logfile()
         logger.info(log_outputs.PROGRAMM_MESSAGE_READY_2)
         # end of reading the configuration
